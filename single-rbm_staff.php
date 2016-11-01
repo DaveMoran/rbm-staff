@@ -27,6 +27,14 @@
                 <div class="col-xs-12 col-sm-9 col-sm-push-3">
                   <?php the_content(); ?>
                 </div>
+                <div class="col-xs-12 col-sm-3 col-sm-pull-9">
+                  <div class="about--fun-fact-foto">
+                    <img width="100%" src="<?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_fun_img', true ) ) ; ?>">
+                    <p>
+                      <?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_staff_fact', true ) ) ; ?>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -37,7 +37,6 @@ function create_rbm_staff() {
         'editor',
         'thumbnail',
         'custom-fields',
-        'excerpt'
       ),
       'taxonomies' => array(''),
       'menu_icon' => 'dashicons-arrow-up-alt2',

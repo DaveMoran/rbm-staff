@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 0.71 =
+* Update plugin template
+
+= 0.7 =
+* Remove Excerpt functionality
+* Add fun fact section
+
 = 0.6 =
 * Save secondary image to post meta for theme usage
 
