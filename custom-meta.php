@@ -21,7 +21,7 @@ function rbm_admin() {
 function display_staff_info_meta_box( $rbm_staff ) {
   //Get the current title based on the staff ID
   $staff_title = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_staff_title', true));
-  $staff_thumbnail_src = '';
+  $staff_thumbnail_src = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_secondary_img', true));
   ?>
   <table id="rbm_metabox">
     <tbody>
@@ -33,8 +33,8 @@ function display_staff_info_meta_box( $rbm_staff ) {
         <td>Secondary Image</td>
         <td>
           <div class="uploader">
-          	<input id="_unique_name" name="settings[_unique_name]" type="text" />
-          	<input id="_unique_name_button" class="button" name="_unique_name_button" type="text" value="Upload" />
+          	<input id="rbm_staff_img" name="rbm_staff_img" type="text" value="<?php echo $staff_thumbnail_src; ?>" />
+          	<input id="rbm_staff_img_button" class="button" name="rbm_staff_img_button" type="text" value="Upload" />
           </div>
         </td>
       </tr>
@@ -48,8 +48,26 @@ function display_staff_info_meta_box( $rbm_staff ) {
     orig_send_attachment = wp.media.editor.send.attachment;
 
     $('#rbm_metabox .button').click(function(e) {
-      alert("Hello!");
-    })
+      var send_attachment_bkp = wp.media.editor.send.attachment;
+      var button = $(this);
+      var id = button.attr('id').replace('_button', '');
+      custom_media = true;
+
+      wp.media.editor.send.attachment = function(props, attachment) {
+        if(custom_media) {
+          $("#" + id).val(attachment.url);
+        } else {
+          return orig_send_attachment.apply( this, [props, attachment] );
+        }
+      }
+
+      wp.media.editor.open(button);
+      return false
+    });
+
+    $('.add_media').on('click', function() {
+      custom_media = false;
+    });
   });
   </script>
 <?php }

@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.51 =
+* Setup javascript to get attachment url
+* Transfer value of attachment url to input
+
 = 0.5 =
 * Setup HTML to add second image
 
