@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.6 =
+* Save secondary image to post meta for theme usage
+
 = 0.51 =
 * Setup javascript to get attachment url
 * Transfer value of attachment url to input

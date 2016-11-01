@@ -78,5 +78,8 @@ function add_staff_title($staff_id, $rbm_staff) {
     if( isset( $_POST['rbm_staff_title'] ) && $_POST['rbm_staff_title'] != '' ) {
       update_post_meta($staff_id, 'rbm_staff_title', $_POST['rbm_staff_title']);
     }
+    if( isset( $_POST['rbm_staff_img'] ) && $_POST['rbm_staff_img'] != '') {
+      update_post_meta($staff_id, 'rbm_secondary_img', $_POST['rbm_staff_img']);
+    }
   }
 }
