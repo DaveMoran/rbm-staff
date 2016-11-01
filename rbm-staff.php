@@ -11,3 +11,4 @@
 
 include_once('cpt-staff.php');
 include_once('custom-meta.php');
+include_once('custom_template.php');

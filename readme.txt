@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.4 =
+* Add check for template in theme
+* Begin default template 
+
 = 0.3 =
 * Add meta box for title
 
