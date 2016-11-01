@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.42 =
+* Finalize RBM single template
+
 = 0.41 =
 * Begin creating template specific to RBM
 * Note: A future version will have a more generic template
