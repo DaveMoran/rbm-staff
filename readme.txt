@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.76 =
+* Display check boxes in admin if proper field is checked
+
 = 0.75 =
 * Save checkboxes as string of array
 

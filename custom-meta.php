@@ -28,6 +28,8 @@ function display_staff_info_meta_box( $rbm_staff ) {
   $staff_twitter = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_twitter', true));
   $staff_email = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_email', true));
   $staff_linkedin = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_linkedin', true));
+  $staff_skills = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_skillset', true));
+  $skills_array = explode(',', $staff_skills);
   ?>
   <table id="rbm_metabox" style="width: 100%">
     <tbody>
@@ -66,15 +68,15 @@ function display_staff_info_meta_box( $rbm_staff ) {
       <tr>
         <td>Expertise</td>
         <td>
-          <input type="checkbox" name="rbm_skillset[]" value="mkt-plan">Marketing Planning &amp; Tactics<br>
-          <input type="checkbox" name="rbm_skillset[]" value="branding">Branding &amp; Logo Design<br>
-          <input type="checkbox" name="rbm_skillset[]" value="web-dev">Website Design &amp; Development<br>
-          <input type="checkbox" name="rbm_skillset[]" value="sem">Search Engine Marketing<br>
-          <input type="checkbox" name="rbm_skillset[]" value="photo-video">Photography &amp; Video Production<br>
-          <input type="checkbox" name="rbm_skillset[]" value="social">Social Media &amp; Reputation Management<br>
-          <input type="checkbox" name="rbm_skillset[]" value="copy">Copywriting &amp; Content Development<br>
-          <input type="checkbox" name="rbm_skillset[]" value="print">Print Design<br>
-          <input type="checkbox" name="rbm_skillset[]" value="ads">Media Buying &amp; Local Advertising<br>
+          <input type="checkbox" name="rbm_skillset[]" value="mkt-plan" <?php if (in_array('mkt-plan', $skills_array)) { echo "checked";} ?>>Marketing Planning &amp; Tactics<br>
+          <input type="checkbox" name="rbm_skillset[]" value="branding" <?php if (in_array('branding', $skills_array)) { echo "checked";} ?>>Branding &amp; Logo Design<br>
+          <input type="checkbox" name="rbm_skillset[]" value="web-dev" <?php if (in_array('web-dev', $skills_array)) { echo "checked";} ?>>Website Design &amp; Development<br>
+          <input type="checkbox" name="rbm_skillset[]" value="sem" <?php if (in_array('sem', $skills_array)) { echo "checked";} ?>>Search Engine Marketing<br>
+          <input type="checkbox" name="rbm_skillset[]" value="photo-video" <?php if (in_array('photo-video', $skills_array)) { echo "checked";} ?>>Photography &amp; Video Production<br>
+          <input type="checkbox" name="rbm_skillset[]" value="social" <?php if (in_array('social', $skills_array)) { echo "checked";} ?>>Social Media &amp; Reputation Management<br>
+          <input type="checkbox" name="rbm_skillset[]" value="copy" <?php if (in_array('copy', $skills_array)) { echo "checked";} ?>>Copywriting &amp; Content Development<br>
+          <input type="checkbox" name="rbm_skillset[]" value="print" <?php if (in_array('print', $skills_array)) { echo "checked";} ?>>Print Design<br>
+          <input type="checkbox" name="rbm_skillset[]" value="ads" <?php if (in_array('ads', $skills_array)) { echo "checked";} ?>>Media Buying &amp; Local Advertising<br>
         </td>
       </tr>
       <tr>
