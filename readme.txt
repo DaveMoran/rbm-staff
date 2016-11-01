@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.75 =
+* Save checkboxes as string of array
+
 = 0.74 =
 * Import changes from RBM theme
 

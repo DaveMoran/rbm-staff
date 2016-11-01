@@ -64,6 +64,23 @@ function display_staff_info_meta_box( $rbm_staff ) {
         <td colspan="2"><hr></td>
       </tr>
       <tr>
+        <td>Expertise</td>
+        <td>
+          <input type="checkbox" name="rbm_skillset[]" value="mkt-plan">Marketing Planning &amp; Tactics<br>
+          <input type="checkbox" name="rbm_skillset[]" value="branding">Branding &amp; Logo Design<br>
+          <input type="checkbox" name="rbm_skillset[]" value="web-dev">Website Design &amp; Development<br>
+          <input type="checkbox" name="rbm_skillset[]" value="sem">Search Engine Marketing<br>
+          <input type="checkbox" name="rbm_skillset[]" value="photo-video">Photography &amp; Video Production<br>
+          <input type="checkbox" name="rbm_skillset[]" value="social">Social Media &amp; Reputation Management<br>
+          <input type="checkbox" name="rbm_skillset[]" value="copy">Copywriting &amp; Content Development<br>
+          <input type="checkbox" name="rbm_skillset[]" value="print">Print Design<br>
+          <input type="checkbox" name="rbm_skillset[]" value="ads">Media Buying &amp; Local Advertising<br>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><hr></td>
+      </tr>
+      <tr>
         <td>Facebook</td>
         <td><input type="text" placeholder="www.facebook.com" name="rbm_facebook" value="<?php echo $staff_facebook; ?>"></td>
       </tr>
@@ -147,6 +164,12 @@ function add_staff_title($staff_id, $rbm_staff) {
     //Save Linkedin
     if( isset( $_POST['rbm_linkedin'] ) && $_POST['rbm_linkedin'] != '') {
       update_post_meta($staff_id, 'rbm_linkedin', $_POST['rbm_linkedin']);
+    }
+    //Save Skills array
+    $skills = $_POST['rbm_skillset'];
+    if(!empty($skills)){
+      $skill_string = implode(',', $skills);
+      update_post_meta($staff_id, 'rbm_skillset', $skill_string);
     }
   }
 }
