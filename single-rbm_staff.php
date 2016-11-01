@@ -3,6 +3,9 @@
  * Template Name: RBM Staff Template
  */
 
+$email = esc_html( get_post_meta( get_the_ID(), 'rbm_email', true ) ) ;
+$linkedin = esc_html( get_post_meta( get_the_ID(), 'rbm_linkedin', true ) ) ;
+
  get_header();?>
 
 <div id="primary">
@@ -33,6 +36,19 @@
                     <p>
                       <?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_staff_fact', true ) ) ; ?>
                     </p>
+                  </div>
+                  <div class="connect--team-member">
+                    <h3>Connect With <?php echo the_title(); ?></h3>
+                    <?php if ($email != '') {?>
+                      <a href="mailto:<?php echo $email; ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="Send <?php echo the_title(); ?> a Message">
+                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-envelope.svg">
+                      </a>
+                    <?php } ?>
+                    <?php if ($linkedin != '') {?>
+                      <a href="<?php echo $linkedin; ?>" target="_blank" data-toggle="tooltip" data-placement="bottom" data-original-title="Connect with <?php echo the_title(); ?> on LinkedIn">
+                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/reach-beyond-icon-linkedin.svg">
+                      </a>
+                    <?php } ?>
                   </div>
                 </div>
               </div>

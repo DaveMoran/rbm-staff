@@ -24,6 +24,10 @@ function display_staff_info_meta_box( $rbm_staff ) {
   $staff_fact = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_staff_fact', true));
   $staff_thumbnail_src = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_secondary_img', true));
   $staff_thumbnail_fun_src = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_fun_img', true));
+  $staff_facebook = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_facebook', true));
+  $staff_twitter = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_twitter', true));
+  $staff_email = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_email', true));
+  $staff_linkedin = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_linkedin', true));
   ?>
   <table id="rbm_metabox" style="width: 100%">
     <tbody>
@@ -61,19 +65,19 @@ function display_staff_info_meta_box( $rbm_staff ) {
       </tr>
       <tr>
         <td>Facebook</td>
-        <td><input type="text" placeholder="www.facebook.com"></td>
+        <td><input type="text" placeholder="www.facebook.com" name="rbm_facebook" value="<?php echo $staff_facebook; ?>"></td>
       </tr>
       <tr>
         <td>Twitter</td>
-        <td><input type="text" placeholder="www.twitter.com"></td>
+        <td><input type="text" placeholder="www.twitter.com" name="rbm_twitter" value="<?php echo $staff_twitter; ?>"></td>
       </tr>
       <tr>
         <td>Email</td>
-        <td><input type="text" placeholder="name@email.com"></td>
+        <td><input type="text" placeholder="name@email.com" name="rbm_email" value="<?php echo $staff_email; ?>"></td>
       </tr>
       <tr>
         <td>LinkedIn</td>
-        <td><input type="text" placeholder="www.linkedin.com"></td>
+        <td><input type="text" placeholder="www.linkedin.com" name="rbm_linkedin" value="<?php echo $staff_linkedin; ?>"></td>
       </tr>
     </tbody>
   </table>
@@ -112,17 +116,37 @@ function display_staff_info_meta_box( $rbm_staff ) {
 add_action('save_post', 'add_staff_title', 10, 2);
 function add_staff_title($staff_id, $rbm_staff) {
   if($rbm_staff->post_type == 'rbm_staff') {
+    // Save Title
     if( isset( $_POST['rbm_staff_title'] ) && $_POST['rbm_staff_title'] != '' ) {
       update_post_meta($staff_id, 'rbm_staff_title', $_POST['rbm_staff_title']);
     }
+    // Save Secondary Image
     if( isset( $_POST['rbm_staff_img'] ) && $_POST['rbm_staff_img'] != '') {
       update_post_meta($staff_id, 'rbm_secondary_img', $_POST['rbm_staff_img']);
     }
+    // Save Fun Fact
     if( isset( $_POST['rbm_staff_fact'] ) && $_POST['rbm_staff_fact'] != '' ) {
       update_post_meta($staff_id, 'rbm_staff_fact', $_POST['rbm_staff_fact']);
     }
+    //Save Fun Fact Image
     if( isset( $_POST['rbm_fun_img'] ) && $_POST['rbm_fun_img'] != '') {
       update_post_meta($staff_id, 'rbm_fun_img', $_POST['rbm_fun_img']);
+    }
+    //Save Facebook
+    if( isset( $_POST['rbm_facebook'] ) && $_POST['rbm_facebook'] != '') {
+      update_post_meta($staff_id, 'rbm_facebook', $_POST['rbm_facebook']);
+    }
+    //Save Twitter
+    if( isset( $_POST['rbm_twitter'] ) && $_POST['rbm_twitter'] != '') {
+      update_post_meta($staff_id, 'rbm_twitter', $_POST['rbm_twitter']);
+    }
+    //Save Email
+    if( isset( $_POST['rbm_email'] ) && $_POST['rbm_email'] != '') {
+      update_post_meta($staff_id, 'rbm_email', $_POST['rbm_email']);
+    }
+    //Save Linkedin
+    if( isset( $_POST['rbm_linkedin'] ) && $_POST['rbm_linkedin'] != '') {
+      update_post_meta($staff_id, 'rbm_linkedin', $_POST['rbm_linkedin']);
     }
   }
 }

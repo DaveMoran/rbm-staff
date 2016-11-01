@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 0.74 =
+* Import changes from RBM theme
+
+= 0.73 =
+* Save links to database
+* Fix spelling error stopping linkedin from saving
+
 = 0.72 =
 * Add Links for email, facebook, linkedin, and twitter
 
