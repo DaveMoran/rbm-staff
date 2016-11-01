@@ -23,7 +23,7 @@ function display_staff_info_meta_box( $rbm_staff ) {
   $staff_title = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_staff_title', true));
   $staff_thumbnail_src = '';
   ?>
-  <table>
+  <table id="rbm_metabox">
     <tbody>
       <tr>
         <td>Title:</td>
@@ -43,6 +43,14 @@ function display_staff_info_meta_box( $rbm_staff ) {
 
   <script>
   // Script to run for the media uploader
+  jQuery(document).ready(function($) {
+    var custom_media = true,
+    orig_send_attachment = wp.media.editor.send.attachment;
+
+    $('#rbm_metabox .button').click(function(e) {
+      alert("Hello!");
+    })
+  });
   </script>
 <?php }
 
