@@ -9,4 +9,5 @@
  License: GPL2
  */
 
-include_once( 'cpt-staff.php');
+include_once('cpt-staff.php');
+include_once('custom-meta.php');
