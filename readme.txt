@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.5 =
+* Setup HTML to add second image
+
 = 0.42 =
 * Finalize RBM single template
 

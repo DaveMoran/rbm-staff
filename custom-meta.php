@@ -9,18 +9,19 @@
 add_action('admin_init', 'rbm_admin');
 
 function rbm_admin() {
-  add_meta_box( 'staff_title_meta_box',
-    'Staff Title',
-    'display_staff_title_meta_box',
+  add_meta_box( 'staff_info_meta_box',
+    'Staff Info',
+    'display_staff_info_meta_box',
     'rbm_staff',
     'normal',
     'high'
   );
 }
 
-function display_staff_title_meta_box( $rbm_staff ) {
+function display_staff_info_meta_box( $rbm_staff ) {
   //Get the current title based on the staff ID
   $staff_title = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_staff_title', true));
+  $staff_thumbnail_src = '';
   ?>
   <table>
     <tbody>
@@ -28,8 +29,21 @@ function display_staff_title_meta_box( $rbm_staff ) {
         <td>Title:</td>
         <td><input type="text" placeholder="Example: Marketing Director" value="<?php echo $staff_title; ?>" name="rbm_staff_title"></td>
       </tr>
+      <tr>
+        <td>Secondary Image</td>
+        <td>
+          <div class="uploader">
+          	<input id="_unique_name" name="settings[_unique_name]" type="text" />
+          	<input id="_unique_name_button" class="button" name="_unique_name_button" type="text" value="Upload" />
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
+
+  <script>
+  // Script to run for the media uploader
+  </script>
 <?php }
 
 add_action('save_post', 'add_staff_title', 10, 2);
