@@ -56,6 +56,25 @@ function display_staff_info_meta_box( $rbm_staff ) {
           </div>
         </td>
       </tr>
+      <tr>
+        <td colspan="2"><hr></td>
+      </tr>
+      <tr>
+        <td>Facebook</td>
+        <td><input type="text" placeholder="www.facebook.com"></td>
+      </tr>
+      <tr>
+        <td>Twitter</td>
+        <td><input type="text" placeholder="www.twitter.com"></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><input type="text" placeholder="name@email.com"></td>
+      </tr>
+      <tr>
+        <td>LinkedIn</td>
+        <td><input type="text" placeholder="www.linkedin.com"></td>
+      </tr>
     </tbody>
   </table>
 

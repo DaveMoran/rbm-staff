@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.72 =
+* Add Links for email, facebook, linkedin, and twitter
+
 = 0.71 =
 * Update plugin template
 
