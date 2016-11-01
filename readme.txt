@@ -1,8 +1,12 @@
 == Changelog ==
 
+= 0.41 =
+* Begin creating template specific to RBM
+* Note: A future version will have a more generic template
+
 = 0.4 =
 * Add check for template in theme
-* Begin default template 
+* Begin default template
 
 = 0.3 =
 * Add meta box for title
