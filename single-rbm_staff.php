@@ -47,9 +47,9 @@ $skill_options = $options[rbm_skills];
                     <?php foreach($skill_options as $key => $value){
                         foreach($skill_array as $skill){
                           if(in_array($skill, $value)) { ?>
-                            <span data-toggle="tooltip" data-placement="bottom" data-original-title="<?php echo $value[0]; ?>">
+                            <a href="<?php echo $value[2] ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="<?php echo $value[0]; ?>">
                               <img src="<?php echo $value[1]; ?>" style="border-radius: 50%;">
-                            </span>
+                            </a>
                           <?php }
                         } ?>
                     <?php } ?>

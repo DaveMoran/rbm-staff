@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.84 =
+* Clean up settings page
+* Add ability to link skills to other inside pages
+
 = 0.83 =
 * Update default template to use loop for skills
 * Update post meta to use/save skills to db

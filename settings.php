@@ -33,9 +33,13 @@ function rbm_skills_render(  ) {
 	$i = 0;
 	echo '<div id="skill-cell">';
 	foreach($options[rbm_skills] as $key => $value) { ?>
-		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'>
-		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'>
-		<br>
+		<label>Skill Name:
+		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
+		<label>Skill Image:
+		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'></label><br>
+		<label>Skill Link: &nbsp;&nbsp;
+		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][2]; ?>'></label><br>
+		<hr>
 	<?php  $i++;  }  echo "</div>";?>
 
 <?php
@@ -68,8 +72,9 @@ function rbm_options_page(  ) {
 				event.preventDefault();
 				var cellHTML = "";
 				newSkillIndex += 1;
-				cellHTML += "<input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''> ";
-				cellHTML += "<input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''>";
+				cellHTML += "<label>Skill Name: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
+				cellHTML += "<label>Skill Image: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
+				cellHTML += "<label>Skill Link: &nbsp;&nbsp; <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><hr>";
 				$("#skill-cell").append(cellHTML);
 			});
 		});
