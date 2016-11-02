@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.82 =
+* Update settings page to use Settings API
+* Ability to add skills and save to db dynamically
+
 = 0.81 =
 * Add placeholder settings page
 

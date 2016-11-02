@@ -18,26 +18,31 @@ function rbm_settings_init(  ) {
 	);
 
 	add_settings_field(
-		'rbm_text_field_0',
-		__( 'Add/Remove Skills', 'wordpress' ),
-		'rbm_text_field_0_render',
+		'rbm_skills',
+		__( 'Staff Skills', 'wordpress' ),
+		'rbm_skills_render',
 		'pluginPage',
 		'rbm_pluginPage_section'
 	);
 }
 
 
-function rbm_text_field_0_render(  ) {
+function rbm_skills_render(  ) {
 
 	$options = get_option( 'rbm_settings' );
-	?>
-	<input type='text' name='rbm_settings[rbm_text_field_0]' value='<?php echo $options['rbm_text_field_0']; ?>'>
-	<?php
+	$i = 0;
+	echo '<div id="skill-cell">';
+	foreach($options[rbm_skills] as $key => $value) { ?>
+		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'>
+		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'>
+		<br>
+	<?php  $i++;  }  echo "</div>";?>
 
+<?php
 }
 
 function rbm_settings_section_callback(  ) {
-	echo __( 'Skills', 'wordpress' );
+	echo __( '', 'wordpress' );
 }
 
 
@@ -51,10 +56,24 @@ function rbm_options_page(  ) {
 		<?php
 		settings_fields( 'pluginPage' );
 		do_settings_sections( 'pluginPage' );
+		echo '<button id="new-skill" class="button">Add New Skill</button>';
 		submit_button();
 		?>
 
 	</form>
+	<script>
+		jQuery(document).ready(function($) {
+			var newSkillIndex = <?php $options = get_option( 'rbm_settings' );  $i = count($options[rbm_skills]); $i--; echo $i; ?>;
+			$('#new-skill').click(function(event) {
+				event.preventDefault();
+				var cellHTML = "";
+				newSkillIndex += 1;
+				cellHTML += "<input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''> ";
+				cellHTML += "<input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''>";
+				$("#skill-cell").append(cellHTML);
+			});
+		});
+	</script>
 	<?php
 
 }
