@@ -39,11 +39,11 @@ function rbm_staff_options() {
         // Put a "settings saved" message on the screen
 
 ?>
-    <div class="updated"><p><strong><?php _e('settings saved.', 'menu-test' ); ?></strong></p></div>
+    <div class="updated"><p><strong><?php _e('Settings saved.', 'menu-test' ); ?></strong></p></div>
     <?php }
     echo '<div class="wrap">';
     // header
-    echo "<h2>" . __( 'Menu Test Plugin Settings', 'menu-test' ) . "</h2>";
+    echo "<h2>" . __( 'RBM Staff Settings', 'menu-test' ) . "</h2>";
     ?>
 
     <form name="form1" method="post" action="">
@@ -55,7 +55,9 @@ function rbm_staff_options() {
               <label>Available Skills</label>
             </th>
             <td>
-              <a href="#" class="button">Add New Skill</a>
+              <div id="skill-cell">
+              </div>
+              <button id="add-skill" class="button">Add New Skill</button>
             </td>
           </tr>
         </tbody>
@@ -67,4 +69,20 @@ function rbm_staff_options() {
       </p>
     </form>
   </div>
+
+  <script>
+    jQuery(document).ready(function($) {
+      $('#add-skill').click(function(event) {
+        event.preventDefault();
+        var formHTML = "<label>Skill Name: </label>";
+        formHTML += "<input type='text'>";
+        formHTML += "<br>";
+        formHTML += "<label>Skill Image: </label>";
+        formHTML += "<input type='text'>";
+        formHTML += "<hr>";
+
+        $('#skill-cell').append(formHTML);
+      });
+    });
+  </script>
 <?php }
