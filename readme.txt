@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.8 =
+* Update single template with conditionals
+* Note: Future update will need to look into making template DRY
+
 = 0.76 =
 * Display check boxes in admin if proper field is checked
 
