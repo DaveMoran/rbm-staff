@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.83 =
+* Update default template to use loop for skills
+* Update post meta to use/save skills to db
+
 = 0.82 =
 * Update settings page to use Settings API
 * Ability to add skills and save to db dynamically

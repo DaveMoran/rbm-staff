@@ -9,6 +9,8 @@ $email = esc_html( get_post_meta( get_the_ID(), 'rbm_email', true ) ) ;
 $linkedin = esc_html( get_post_meta( get_the_ID(), 'rbm_linkedin', true ) ) ;
 $skill_string = esc_html(get_post_meta( get_the_ID(), 'rbm_skillset', true));
 $skill_array = explode(',', $skill_string);
+$options = get_option( 'rbm_settings' );
+$skill_options = $options[rbm_skills];
  get_header();?>
 
 <div id="primary">
@@ -42,51 +44,15 @@ $skill_array = explode(',', $skill_string);
                   </div>
                   <div class="connect--team-member">
                     <h3>Expert In:</h3>
-                    <?php if(in_array('mkt-plan', $skill_array)) { ?>
-                      <a href="/services/marketing-planning-tactics/" data-toggle="tooltip" data-placement="bottom" data-original-title="Marketing Planning & Tactics">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-marketing-planning-and-tactics.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('branding', $skill_array)) { ?>
-                      <a href="/services/branding-logo-design/" data-toggle="tooltip" data-placement="bottom" data-original-title="Branding & Logo Design">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-branding-and-logo-design.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('web-dev', $skill_array)) { ?>
-                      <a href="/services/website-design-development/" data-toggle="tooltip" data-placement="bottom" data-original-title="Website Design & Development">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-website-design-and-development.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('sem', $skill_array)) { ?>
-                      <a href="/services/search-engine-marketing/" data-toggle="tooltip" data-placement="bottom" data-original-title="Search Engine Marketing">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-search-engine-marketing.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('photo-video', $skill_array)) { ?>
-                      <a href="/services/photography-video-production/" data-toggle="tooltip" data-placement="bottom" data-original-title="Video Production">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-photography-and-video-production.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('social', $skill_array)) { ?>
-                      <a href="/services/reputation-management-social-media/" data-toggle="tooltip" data-placement="bottom" data-original-title="Social Media & Reputation Management">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-reputation-management-and-social-media.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('copy', $skill_array)) { ?>
-                      <a href="/services/copywriting-content-development/" data-toggle="tooltip" data-placement="bottom" data-original-title="Copywriting & Content Development">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-copywriting-and-content-development.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('print', $skill_array)) { ?>
-                      <a href="/services/print-design/" data-toggle="tooltip" data-placement="bottom" data-original-title="Print Design">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-brochure-and-stationary-design.svg">
-                      </a>
-                      <?php } ?>
-                    <?php if(in_array('ads', $skill_array)) { ?>
-                      <a href="/services/media-buying-local-advertising/" data-toggle="tooltip" data-placement="bottom" data-original-title="Media Buying & Local Advertising">
-                        <img src="http://reachbeyondmarketing.com/wp-content/uploads/2015/09/icon-media-buying-and-local-advertising.svg">
-                      </a>
-                      <?php } ?>
+                    <?php foreach($skill_options as $key => $value){
+                        foreach($skill_array as $skill){
+                          if(in_array($skill, $value)) { ?>
+                            <span data-toggle="tooltip" data-placement="bottom" data-original-title="<?php echo $value[0]; ?>">
+                              <img src="<?php echo $value[1]; ?>" style="border-radius: 50%;">
+                            </span>
+                          <?php }
+                        } ?>
+                    <?php } ?>
                   </div>
                   <div class="connect--team-member">
                     <h3>Connect With <?php echo the_title(); ?></h3>
