@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.81 =
+* Add placeholder settings page
+
 = 0.8 =
 * Update single template with conditionals
 * Note: Future update will need to look into making template DRY
