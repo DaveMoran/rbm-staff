@@ -31,6 +31,38 @@ function display_staff_info_meta_box( $rbm_staff ) {
   $staff_skills = esc_html(get_post_meta( $rbm_staff->ID, 'rbm_skillset', true));
   $skills_array = explode(',', $staff_skills);
   ?>
+  <style>
+  /* Custom Styles for table, inspired by Semantic UI */
+
+  #rbm_metabox input {
+    margin: 0;
+    max-width: 100%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    outline: 0;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    text-align: left;
+    line-height: 1.2142em;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    padding: .67861429em 1em;
+    background: #FFF;
+    border: 1px solid rgba(34,36,38,.15);
+    color: rgba(0,0,0,.87);
+    border-radius: .28571429rem;
+    -webkit-transition: box-shadow .1s ease,border-color .1s ease;
+    transition: box-shadow .1s ease,border-color .1s ease;
+    box-shadow: none;
+  }
+  #rbm_metabox button {
+    min-height: 1em;
+    height: initial;
+    vertical-align: baseline;
+    padding: .78571429em 1.5em;
+    line-height: 1em;
+  }
+  </style>
   <table id="rbm_metabox" style="width: 100%">
     <tbody>
       <tr>
@@ -42,7 +74,7 @@ function display_staff_info_meta_box( $rbm_staff ) {
         <td>
           <div class="uploader">
           	<input id="rbm_staff_img" name="rbm_staff_img" type="text" value="<?php echo $staff_thumbnail_src; ?>" />
-          	<input id="rbm_staff_img_button" class="button" name="rbm_staff_img_button" type="text" value="Upload" />
+          	<button id="rbm_staff_img_button" class="button" name="rbm_staff_img_button" value="Upload" >Upload</button>
           </div>
         </td>
       </tr>
@@ -58,7 +90,7 @@ function display_staff_info_meta_box( $rbm_staff ) {
         <td>
           <div class="uploader">
           	<input id="rbm_fun_img" name="rbm_fun_img" type="text" value="<?php echo $staff_thumbnail_fun_src; ?>" />
-          	<input id="rbm_fun_img_button" class="button" name="rbm_fun_img_button" type="text" value="Upload" />
+          	<button id="rbm_fun_img_button" class="button" name="rbm_fun_img_button" value="Upload">Upload</button>
           </div>
         </td>
       </tr>

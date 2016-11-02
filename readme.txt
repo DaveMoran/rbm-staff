@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.85 =
+* Updated version number
+* Added styles to settings page + metabox
+
 = 0.84 =
 * Clean up settings page
 * Add ability to link skills to other inside pages

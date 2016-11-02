@@ -53,6 +53,29 @@ function rbm_settings_section_callback(  ) {
 function rbm_options_page(  ) {
 
 	?>
+	<style>
+		input {
+	    margin: 0;
+	    max-width: 100%;
+	    -webkit-box-flex: 1;
+	    -webkit-flex: 1 0 auto;
+	    -ms-flex: 1 0 auto;
+	    flex: 1 0 auto;
+	    outline: 0;
+	    -webkit-tap-highlight-color: rgba(255,255,255,0);
+	    text-align: left;
+	    line-height: 1.2142em;
+	    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	    padding: .67861429em 1em;
+	    background: #FFF;
+	    border: 1px solid rgba(34,36,38,.15);
+	    color: rgba(0,0,0,.87);
+	    border-radius: .28571429rem;
+	    -webkit-transition: box-shadow .1s ease,border-color .1s ease;
+	    transition: box-shadow .1s ease,border-color .1s ease;
+	    box-shadow: none;
+		}
+	</style>
 	<form action='options.php' method='post'>
 
 		<h2>RBM Staff Settings</h2>
