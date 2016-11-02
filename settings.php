@@ -1,62 +1,62 @@
 <?php
+add_action( 'admin_menu', 'rbm_add_admin_menu' );
+add_action( 'admin_init', 'rbm_settings_init' );
 
-add_action( 'admin_menu', 'rbm_staff_menu');
-
-function rbm_staff_menu() {
-  add_submenu_page(
-    'edit.php?post_type=rbm_staff',
-    'RBM Staff',
-    'Settings',
-    'edit_posts',
-    basename(__FILE__),
-    'rbm_staff_options'
-  );
+function rbm_add_admin_menu(  ) {
+	add_submenu_page( 'edit.php?post_type=rbm_staff', 'RBM Staff', 'Settings', 'edit_posts', basename(__FILE__), 'rbm_options_page' );
 }
 
-function rbm_staff_options() {
-  //must check that the user has the required capability
-  if (!current_user_can('manage_options')) {
-    wp_die( __('You do not have sufficient permissions to access this page.') );
-  }
+function rbm_settings_init(  ) {
+
+	register_setting( 'pluginPage', 'rbm_settings' );
+
+	add_settings_section(
+		'rbm_pluginPage_section',
+		__( 'Settings page for the RBM Staff plugin', 'wordpress' ),
+		'rbm_settings_section_callback',
+		'pluginPage'
+	);
+
+	add_settings_field(
+		'rbm_text_field_0',
+		__( 'Add/Remove Skills', 'wordpress' ),
+		'rbm_text_field_0_render',
+		'pluginPage',
+		'rbm_pluginPage_section'
+	);
+}
+
+
+function rbm_text_field_0_render(  ) {
+
+	$options = get_option( 'rbm_settings' );
+	?>
+	<input type='text' name='rbm_settings[rbm_text_field_0]' value='<?php echo $options['rbm_text_field_0']; ?>'>
+	<?php
+
+}
+
+function rbm_settings_section_callback(  ) {
+	echo __( 'Skills', 'wordpress' );
+}
+
+
+function rbm_options_page(  ) {
+
+	?>
+	<form action='options.php' method='post'>
+
+		<h2>RBM Staff Settings</h2>
+
+		<?php
+		settings_fields( 'pluginPage' );
+		do_settings_sections( 'pluginPage' );
+		submit_button();
+		?>
+
+	</form>
+	<?php
+
+}
 
 ?>
-
-    <form name="form1" method="post" action="">
-      <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
-      <table class="form-table">
-        <tbody>
-          <tr>
-            <th scope="row">
-              <label>Available Skills</label>
-            </th>
-            <td>
-              <div id="skill-cell">
-              </div>
-              <button id="add-skill" class="button">Add New Skill</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <hr />
-
-      <p class="submit">
-        <input type="submit" name="Submit" class="button-primary" value="<?php esc_attr_e('Save Changes') ?>" />
-      </p>
-    </form>
-  </div>
-
-  <script>
-    jQuery(document).ready(function($) {
-      $('#add-skill').click(function(event) {
-        event.preventDefault();
-        var formHTML = "<label>Skill Name: </label>";
-        formHTML += "<input type='text'>";
-        formHTML += "<br>";
-        formHTML += "<label>Skill Image: </label>";
-        formHTML += "<input type='text'>";
-        formHTML += "<hr>";
-        $('#skill-cell').append(formHTML);
-      });
-    });
-  </script>
-<?php }
