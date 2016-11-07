@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.92 =
+* Add Shortcode support
+
 = 0.91 =
 * Minor bug fixes
 
