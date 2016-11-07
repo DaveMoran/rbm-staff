@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 0.9 =
+* Add ability to delete skills
+* Minor CSS Changes to settings page
+
 = 0.85 =
 * Updated version number
 * Added styles to settings page + metabox
