@@ -110,7 +110,8 @@ function rbm_options_page(  ) {
 				event.preventDefault();
 				//Step 1, save existing array
 				var currentSkills = <?php $options = get_option( 'rbm_settings' ); echo json_encode($options['rbm_skills']); ?>;
-				var newSkillIndex = <?php $options = get_option( 'rbm_settings' );  $i = count($options[rbm_skills]); $i--; echo $i; ?>;
+				newSkillIndex--;
+
 				//Step 2, get array index from button
 				var skillId = $(this).data("index");
 				var newArray = new Array();
@@ -136,7 +137,6 @@ function rbm_options_page(  ) {
 					cellHTML += '<button id="remove-'+ i +'" data-index="'+i+'" class="remove-skill button">Remove Skill</button>';
 					cellHTML += "<hr></div>"
 					$("#skill-cell").append(cellHTML);
-					newSkillIndex--;
 				}
 
 
