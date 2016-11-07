@@ -33,13 +33,16 @@ function rbm_skills_render(  ) {
 	$i = 0;
 	echo '<div id="skill-cell">';
 	foreach($options[rbm_skills] as $key => $value) { ?>
-		<label>Skill Name:
-		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
-		<label>Skill Image:
-		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'></label><br>
-		<label>Skill Link: &nbsp;&nbsp;
-		<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][2]; ?>'></label><br>
-		<hr>
+		<div class="skills">
+			<label>Skill Name:
+			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
+			<label>Skill Image:
+			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'></label><br>
+			<label>Skill Link: &nbsp;&nbsp;
+			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][2]; ?>'></label>
+			<button id="remove-<?php echo $i; ?>" data-index="<?php echo $i; ?>" class="remove-skill button">Remove Skill</button>
+			<hr>
+		</div>
 	<?php  $i++;  }  echo "</div>";?>
 
 <?php
@@ -93,17 +96,47 @@ function rbm_options_page(  ) {
 			var newSkillIndex = <?php $options = get_option( 'rbm_settings' );  $i = count($options[rbm_skills]); $i--; echo $i; ?>;
 			$('#new-skill').click(function(event) {
 				event.preventDefault();
-				var cellHTML = "";
+				var cellHTML = "<div class='skills'>";
 				newSkillIndex += 1;
 				cellHTML += "<label>Skill Name: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
 				cellHTML += "<label>Skill Image: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
-				cellHTML += "<label>Skill Link: &nbsp;&nbsp; <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><hr>";
+				cellHTML += "<label>Skill Link: &nbsp;&nbsp; <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label>";
+				cellHTML += '<button id="remove-<?php echo $i; ?>" data-index="<?php echo $i; ?>" class="remove-skill button">Remove Skill</button>';
+				cellHTML += "<hr></div>";
 				$("#skill-cell").append(cellHTML);
 			});
+			$('.remove-skill').click(function(event) {
+				event.preventDefault();
+				//Step 1, save existing array
+				var currentSkills = <?php $options = get_option( 'rbm_settings' ); echo json_encode($options['rbm_skills']); ?>;
+
+				//Step 2, get array index from button
+				var skillId = $(this).data("index");
+				var newArray = new Array();
+
+				//Step 3, Create a loop to form a new array
+				for(var i = 0; i < currentSkills.length; i++){
+					//Step 4, When on the index skip the push
+					if(i != skillId) {
+						newArray.push(currentSkills[i]);
+					}
+				}
+
+				//Step 5, Delete everything inside of skill-cell
+				$("#skill-cell").empty();
+
+				//Step 6, Begin new loop, replace divs with new
+				for(var i = 0; i < newArray.length; i++) {
+					var cellHTML = "";
+					cellHTML += "<div class='skills'>"
+					cellHTML += "<hr></div>"
+					$("#skill-cell").append(cellHTML);
+				}
+
+
+			})
 		});
 	</script>
 	<?php
 
 }
-
-?>
