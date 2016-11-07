@@ -98,7 +98,7 @@ function rbm_options_page(  ) {
 			var newSkillIndex = <?php
 			 	$options = get_option( 'rbm_settings' );
 				if($options) {
-					$i = count($options[rbm_skills]);
+					$i = count($options['rbm_skills']);
 					$i--;
 					echo $i;
 				} else {

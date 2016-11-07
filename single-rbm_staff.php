@@ -36,14 +36,16 @@ $skill_options = $options['rbm_skills'];
                   <?php the_content(); ?>
                 </div>
                 <div class="col-xs-12 col-sm-3 col-sm-pull-9">
-                  <div class="about--fun-fact-foto">
-                    <img width="100%" src="<?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_fun_img', true ) ) ; ?>">
-                    <p>
-                      <?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_staff_fact', true ) ) ; ?>
-                    </p>
-                  </div>
+                <?php
+                  $factImg = esc_html( get_post_meta( get_the_ID(), 'rbm_fun_img', true ) );
+                  if ($factImg) { ?>
+                    <div class="about--fun-fact-foto">
+                      <img style='width: 100%; height: auto;' src='<?php echo $factImg; ?>'>;
+                      <p><?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_staff_fact', true ) ) ; ?></p>
+                    </div>
+                <?php } ?>
+                <?php if($skill_options) { ?>
                   <div class="connect--team-member">
-                    <?php if($skill_options) { ?>
                     	<h3>Expert In:</h3>
                     	<?php foreach($skill_options as $key => $value){
                         		foreach($skill_array as $skill){
@@ -53,8 +55,8 @@ $skill_options = $options['rbm_skills'];
                             			</a>
                       			<?php }
                     			} ?>
-                    	<?php } } ?>
                   </div>
+                <?php } } ?>
                   <div class="connect--team-member">
                     <h3>Connect With <?php echo the_title(); ?></h3>
                     <?php if ($facebook != '') {?>
