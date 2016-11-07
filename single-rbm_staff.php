@@ -40,7 +40,7 @@ $skill_options = $options['rbm_skills'];
                   $factImg = esc_html( get_post_meta( get_the_ID(), 'rbm_fun_img', true ) );
                   if ($factImg) { ?>
                     <div class="about--fun-fact-foto">
-                      <img style='width: 100%; height: auto;' src='<?php echo $factImg; ?>'>;
+                      <img style='width: 100%; height: auto;' src='<?php echo $factImg; ?>'>
                       <p><?php echo esc_html( get_post_meta( get_the_ID(), 'rbm_staff_fact', true ) ) ; ?></p>
                     </div>
                 <?php } ?>
