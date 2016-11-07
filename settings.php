@@ -32,20 +32,22 @@ function rbm_skills_render(  ) {
 	$options = get_option( 'rbm_settings' );
 	$i = 0;
 	echo '<div id="skill-cell">';
-	foreach($options[rbm_skills] as $key => $value) { ?>
-		<div class="skills">
-			<label>Skill Name:
-			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
-			<label>Skill Image:
-			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'></label><br>
-			<label>Skill Link: &nbsp;&nbsp;
-			<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][2]; ?>'></label>
-			<button id="remove-<?php echo $i; ?>" data-index="<?php echo $i; ?>" class="remove-skill button">Remove Skill</button>
-			<hr>
-		</div>
-	<?php  $i++;  }  echo "</div>";?>
+	if($options) {
+		foreach($options[rbm_skills] as $key => $value) { ?>
+			<div class="skills">
+				<label>Skill Name:
+				<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
+				<label>Skill Image:
+				<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][1]; ?>'></label><br>
+				<label>Skill Link: &nbsp;&nbsp;
+				<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][2]; ?>'></label>
+				<button id="remove-<?php echo $i; ?>" data-index="<?php echo $i; ?>" class="remove-skill button">Remove Skill</button>
+				<hr>
+			</div>
+		<?php  $i++;  }  echo "</div>"; } else {
+			echo "Add a new skill to get started";
+		};
 
-<?php
 }
 
 function rbm_settings_section_callback(  ) {
