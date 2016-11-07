@@ -43,16 +43,17 @@ $skill_options = $options[rbm_skills];
                     </p>
                   </div>
                   <div class="connect--team-member">
-                    <h3>Expert In:</h3>
-                    <?php foreach($skill_options as $key => $value){
-                        foreach($skill_array as $skill){
-                          if(in_array($skill, $value)) { ?>
-                            <a href="<?php echo $value[2] ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="<?php echo $value[0]; ?>">
-                              <img src="<?php echo $value[1]; ?>" style="border-radius: 50%;">
-                            </a>
-                          <?php }
-                        } ?>
-                    <?php } ?>
+                    <?php if($skill_options) { ?>
+                    	<h3>Expert In:</h3>
+                    	<?php foreach($skill_options as $key => $value){
+                        		foreach($skill_array as $skill){
+                          			if(in_array($skill, $value)) { ?>
+                        				<a href="<?php echo $value[2] ?>" data-toggle="tooltip" data-placement="bottom" data-original-title="<?php echo $value[0]; ?>">
+                              				<img src="<?php echo $value[1]; ?>" style="border-radius: 50%;">
+                            			</a>
+                      			<?php }
+                    			} ?>
+                    	<?php } } ?>
                   </div>
                   <div class="connect--team-member">
                     <h3>Connect With <?php echo the_title(); ?></h3>
