@@ -10,7 +10,7 @@ $linkedin = esc_html( get_post_meta( get_the_ID(), 'rbm_linkedin', true ) ) ;
 $skill_string = esc_html(get_post_meta( get_the_ID(), 'rbm_skillset', true));
 $skill_array = explode(',', $skill_string);
 $options = get_option( 'rbm_settings' );
-$skill_options = $options[rbm_skills];
+$skill_options = $options['rbm_skills'];
  get_header();?>
 
 <div id="primary">

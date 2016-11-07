@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 0.91 =
+* Minor bug fixes
+
 = 0.9 =
 * Add ability to delete skills
 * Minor CSS Changes to settings page

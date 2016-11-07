@@ -102,7 +102,7 @@ function display_staff_info_meta_box( $rbm_staff ) {
         <td>
           <?php
             $options = get_option( 'rbm_settings' );
-            foreach($options[rbm_skills] as $key => $value) {
+            foreach($options['rbm_skills'] as $key => $value) {
            ?>
            <input id="skill-<?php echo $value[0];?>" type="checkbox" name="rbm_skillset[]" value="<?php echo $value[0]; ?>" <?php if (in_array($value[0], $skills_array)) { echo "checked";} ?>>
            <label for="skill-<?php echo $value[0]; ?>"><img src="<?php echo $value[1]; ?>" width="16" height="16" style="border-radius: 50%;"> <?php echo $value[0]; ?></label>

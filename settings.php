@@ -33,7 +33,7 @@ function rbm_skills_render(  ) {
 	$i = 0;
 	echo '<div id="skill-cell">';
 	if($options) {
-		foreach($options[rbm_skills] as $key => $value) { ?>
+		foreach($options['rbm_skills'] as $key => $value) { ?>
 			<div class="skills">
 				<label>Skill Name:
 				<input type='text' name='rbm_settings[rbm_skills][<?php echo $i; ?>][]' value='<?php echo $options['rbm_skills'][$i][0]; ?>'></label><br>
