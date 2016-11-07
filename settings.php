@@ -95,7 +95,15 @@ function rbm_options_page(  ) {
 	</form>
 	<script>
 		jQuery(document).ready(function($) {
-			var newSkillIndex = <?php $options = get_option( 'rbm_settings' );  $i = count($options[rbm_skills]); $i--; echo $i; ?>;
+			var newSkillIndex = <?php
+			 	$options = get_option( 'rbm_settings' );
+				if($options) {
+					$i = count($options[rbm_skills]);
+					$i--;
+					echo $i;
+				} else {
+					echo 0;
+				} ?>;
 			$('#new-skill').click(function(event) {
 				event.preventDefault();
 				var cellHTML = "<div class='skills'>";
@@ -103,7 +111,7 @@ function rbm_options_page(  ) {
 				cellHTML += "<label>Skill Name: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
 				cellHTML += "<label>Skill Image: <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label><br>";
 				cellHTML += "<label>Skill Link: &nbsp;&nbsp; <input type='text' name='rbm_settings[rbm_skills]["+newSkillIndex+"][]' value=''></label>";
-				cellHTML += '<button id="remove-<?php echo $i; ?>" data-index="<?php echo $i; ?>" class="remove-skill button">Remove Skill</button>';
+				cellHTML += "<button id='remove-" +newSkillIndex+ "' data-index='" +newSkillIndex + "' class='remove-skill button'>Remove Skill</button>";
 				cellHTML += "<hr></div>";
 				$("#skill-cell").append(cellHTML);
 			});
@@ -111,7 +119,13 @@ function rbm_options_page(  ) {
 			$('.remove-skill').click(function(event) {
 				event.preventDefault();
 				//Step 1, save existing array
-				var currentSkills = <?php $options = get_option( 'rbm_settings' ); echo json_encode($options['rbm_skills']); ?>;
+				var currentSkills = <?php
+					$options = get_option( 'rbm_settings' );
+					if ($options) {
+						echo json_encode($options['rbm_skills']);
+					} else {
+						echo 0;
+					} ?>;
 				newSkillIndex--;
 
 				//Step 2, get array index from button
@@ -140,9 +154,7 @@ function rbm_options_page(  ) {
 					cellHTML += "<hr></div>"
 					$("#skill-cell").append(cellHTML);
 				}
-
-
-			})
+			});
 		});
 	</script>
 	<?php
